@@ -1,0 +1,266 @@
+{
+  "port": 9001,
+  "server_name": "potato annotator",
+  "annotation_task_name": "AI Companion Harm Annotation",
+  "output_annotation_dir": "annotation_output/pilot/acha/",
+  "output_annotation_format": "tsv",
+  "annotation_codebook_url": "https://drive.google.com/file/d/1eiuNY50EXs3v3CfXQgNtNksompVhQYJg/view?usp=drive_link",
+  "data_files": ["data_files/pilot_data.jsonl"],
+  "item_properties": { "id_key": "id", "text_key": "text" },
+  "list_as_text": { "text_list_prefix_type": "None", "horizontal": false },
+  "user_config": { "allow_all_users": true, "users": [] },
+  "login": { "type": "url_direct", "url_argument": "participantId" },
+  "jumping_to_id_disabled": false,
+  "hide_navbar": false,
+  "surveyflow":
+    {
+      "on": true,
+      "order": ["pre_annotation", "post_annotation"],
+      "pre_annotation":
+        [
+          # "surveyflow/introduction.jsonl"
+        ],
+      "prestudy_passed": ["surveyflow/prestudy_pass.jsonl"],
+      "prestudy_failed": ["surveyflow/prestudy_fail.jsonl"],
+      "post_annotation": ["surveyflow/end.jsonl"],
+      "testing": ["surveyflow/testing.jsonl"],
+    },
+  "prestudy":
+    {
+      "on": false,
+      "minimum_score": 0.8,
+      "groundtruth_key": "whether_match",
+      "question_key": "Whether the presented sentences are discussing the same scientific finding",
+      "answer_mapping": { "Yes": true, "No": false },
+      "pass_page": "surveyflow/prestudy_pass.jsonl",
+      "fail_page": "surveyflow/prestudy_fail.jsonl",
+    },
+  "automatic_assignment":
+    {
+      "on": true,
+      "output_filename": "task_assignment.json",
+      "sampling_strategy": "random",
+      "labels_per_instance": 3,
+      "instance_per_annotator": 3,
+      "test_question_per_annotator": 2,
+      "users": [],
+    },
+  "alert_time_each_instance": 10000000,
+  "horizontal_key_bindings": false,
+"annotation_schemes":
+    [
+      {
+        "annotation_type": "radio",
+        "name": "Q1. Nature of harm",
+        "description": "How would you classify the nature of harm in this interaction?",
+        "labels":
+          [
+            {
+              "name": "Actual harm",
+              "tooltip": "Harm is directly perceived or emotionally felt by the user.",
+              "key_value": "actual",
+            },
+            {
+              "name": "Potential harm",
+              "tooltip": "Interaction carries risk of harm but harm is not explicitly acknowledged.",
+              "key_value": "potential",
+            },
+            {
+              "name": "No harm",
+              "tooltip": "No apparent harm is present in this interaction.",
+              "key_value": "none",
+            },
+          ],
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "multiselect",
+        "name": "Q1a. Type of harm",
+        "description": "What type(s) of harm does this interaction appear to involve?",
+        "labels":
+          [
+            { "name": "Physical harm", "key_value": "physical" },
+            {
+              "name": "Psychological/emotional harm",
+              "key_value": "psychological",
+            },
+            { "name": "Reputational harm", "key_value": "reputational" },
+            { "name": "Economic/financial harm", "key_value": "economic" },
+            { "name": "Environmental harm", "key_value": "environmental" },
+            {
+              "name": "Public interest harm",
+              "tooltip": "e.g., disinformation/democratic harm",
+              "key_value": "public_interest",
+            },
+            {
+              "name": "Human/fundamental rights harm",
+              "key_value": "human_rights",
+            },
+            { "name": "No harm", "key_value": "8" },
+          ],
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "likert",
+        "name": "Q1b. Severity of harm",
+        "description": "How severe do you perceive the harm to be?",
+        "labels":
+          [
+            { "name": "Negligible", "key_value": "1" },
+            { "name": "Minor", "key_value": "2" },
+            { "name": "Moderate", "key_value": "3" },
+            { "name": "Severe", "key_value": "4" },
+            {
+              "name": "Critical",
+              "tooltip": "Extremely severe",
+              "key_value": "5",
+            },
+            { "name": "No harm", "key_value": "6" },
+          ],
+        "displaying_score": true,
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "likert",
+        "name": "Q1c. Extent of harm",
+        "description": "How much harm do you think this interaction may cause?",
+        "labels":
+          [
+            { "name": "Minor harm", "key_value": "1" },
+            { "name": "Mild harm", "key_value": "2" },
+            { "name": "Moderate harm", "key_value": "3" },
+            { "name": "Serious harm", "key_value": "4" },
+            {
+              "name": "Severe or lasting harm",
+              "tooltip": "Temporary vs lasting harm",
+              "key_value": "5",
+            },
+            { "name": "No harm", "key_value": "6" },
+          ],
+        "displaying_score": true,
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "likert",
+        "name": "Q1d. Reversibility of harm",
+        "description": "To what extent is the harm reversible or repairable?",
+        "labels":
+          [
+            { "name": "Fully reversible", "key_value": "1" },
+            { "name": "Mostly reversible", "key_value": "2" },
+            { "name": "Partially reversible", "key_value": "3" },
+            { "name": "Mostly irreversible", "key_value": "4" },
+            { "name": "Completely irreversible", "key_value": "5" },
+            { "name": "No harm", "key_value": "6" },
+          ],
+        "displaying_score": true,
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "likert",
+        "name": "Q1e. AI intentionality",
+        "description": "To what extent did the AI appear to act with intent or purpose in producing the harmful outcome?",
+        "labels":
+          [
+            { "name": "Not at all intentional", "key_value": "1" },
+            { "name": "Slightly intentional", "key_value": "2" },
+            { "name": "Moderately intentional", "key_value": "3" },
+            { "name": "Very intentional", "key_value": "4" },
+            { "name": "Completely intentional", "key_value": "5" },
+            { "name": "No harm", "key_value": "6" },
+          ],
+        "displaying_score": true,
+        "label_requirement": { "required": true },
+      },
+      {
+        "annotation_type": "radio",
+        "name": "Q1f. Initiator",
+        "description": "Who initiated the harmful interaction?",
+        "labels":
+          [
+            { "name": "The user", "key_value": "user" },
+            { "name": "The AI (Replika)", "key_value": "ai" },
+            { "name": "Hard to tell", "key_value": "unclear" },
+            { "name": "No harm", "key_value": "4" },
+          ],
+        "label_requirement": { "required": true },
+      },
+{
+  "annotation_type": "multirate",
+
+  "name": "Q1g. Responsibilities",
+
+  "description": "To what extent is each of the following parties responsible for the harm observed in this interaction?",
+
+  "display_config": {
+    "num_columns": 1
+  },
+
+  "arrangement": "vertical",
+
+  "options": [
+    "The AI agent (Replika)",
+    "The user (human who interacted with the AI)",
+    "The developer team (e.g., prompt engineers, product designers)",
+    "The company/platform (i.e., Replika)",
+    "The underlying model provider (e.g., OpenAI)",
+    "The regulators or oversight bodies",
+    "Other"
+  ],
+
+  "labels": [
+    "Not responsible at all",
+    "Slightly responsible",
+    "Moderately responsible",
+    "Highly responsible",
+    "Fully responsible",
+    "No harm"
+  ],
+
+  "label_requirement": {
+    "required": true
+  },
+
+  "sequential_key_binding": true,
+},
+
+{
+  "annotation_type": "text",
+  "name": "Q1g. Other Explanation",
+  "description": "If you believe other parties are responsible, please describe them here."
+}
+,
+      {
+        "annotation_type": "radio",
+        "name": "Q2. Harmful behavior category",
+        "description": "Does the AI companion exhibit any harmful behavior in this conversation excerpt?",
+        "labels":
+          [
+            { "name": "Sexual misconduct", "key_value": "sexual" },
+            { "name": "Antisocial behavior", "key_value": "antisocial" },
+            {
+              "name": "Physical aggression",
+              "key_value": "physical_aggression",
+            },
+            { "name": "Control", "key_value": "control" },
+            { "name": "Manipulation", "key_value": "manipulation" },
+            { "name": "Infidelity", "key_value": "infidelity" },
+            { "name": "Mis/Disinformation", "key_value": "misinformation" },
+            { "name": "Verbal abuse", "key_value": "verbal_abuse" },
+            { "name": "Biased opinion", "key_value": "bias" },
+            { "name": "Substance abuse", "key_value": "substance" },
+            { "name": "Self-harm & Suicide", "key_value": "self_harm" },
+            { "name": "Privacy violations", "key_value": "privacy" },
+            { "name": "Disregard", "key_value": "disregard" },
+            { "name": "Others", "key_value": "other" },
+            { "name": "No harm", "key_value": "15" },
+          ],
+        "has_free_response": { "instruction": "If others, please specify:" },
+        "label_requirement": { "required": true },
+      },
+    ],
+  "html_layout": "templates/layout.html",
+  "base_html_template": "default",
+  "header_file": "default",
+  "site_dir": "default",
+}
