@@ -1,5 +1,5 @@
 {
-  "port": 9001,
+  "port": 8000,
   "server_name": "potato annotator",
   "annotation_task_name": "AI Companion Harm Annotation",
   "output_annotation_dir": "annotation_output/pilot/acha/",
@@ -47,7 +47,7 @@
     },
   "alert_time_each_instance": 10000000,
   "horizontal_key_bindings": false,
-"annotation_schemes":
+  "annotation_schemes":
     [
       {
         "annotation_type": "radio",
@@ -96,7 +96,7 @@
               "name": "Human/fundamental rights harm",
               "key_value": "human_rights",
             },
-            { "name": "No harm", "key_value": "8" },
+            { "name": "Select this if no harm presented", "key_value": "8" },
           ],
         "label_requirement": { "required": true },
       },
@@ -115,7 +115,7 @@
               "tooltip": "Extremely severe",
               "key_value": "5",
             },
-            { "name": "No harm", "key_value": "6" },
+            { "name": "Select this if no harm presented", "key_value": "6" },
           ],
         "displaying_score": true,
         "label_requirement": { "required": true },
@@ -135,7 +135,7 @@
               "tooltip": "Temporary vs lasting harm",
               "key_value": "5",
             },
-            { "name": "No harm", "key_value": "6" },
+            { "name": "Select this if no harm presented", "key_value": "6" },
           ],
         "displaying_score": true,
         "label_requirement": { "required": true },
@@ -151,7 +151,7 @@
             { "name": "Partially reversible", "key_value": "3" },
             { "name": "Mostly irreversible", "key_value": "4" },
             { "name": "Completely irreversible", "key_value": "5" },
-            { "name": "No harm", "key_value": "6" },
+            { "name": "Select this if no harm presented", "key_value": "6" },
           ],
         "displaying_score": true,
         "label_requirement": { "required": true },
@@ -167,7 +167,7 @@
             { "name": "Moderately intentional", "key_value": "3" },
             { "name": "Very intentional", "key_value": "4" },
             { "name": "Completely intentional", "key_value": "5" },
-            { "name": "No harm", "key_value": "6" },
+            { "name": "Select this if no harm presented", "key_value": "6" },
           ],
         "displaying_score": true,
         "label_requirement": { "required": true },
@@ -181,55 +181,54 @@
             { "name": "The user", "key_value": "user" },
             { "name": "The AI (Replika)", "key_value": "ai" },
             { "name": "Hard to tell", "key_value": "unclear" },
-            { "name": "No harm", "key_value": "4" },
+            { "name": "Select this if no harm presented", "key_value": "4" },
           ],
         "label_requirement": { "required": true },
       },
-{
-  "annotation_type": "multirate",
+      {
+        "annotation_type": "multirate",
 
-  "name": "Q1g. Responsibilities",
+        "name": "Q1g. Responsibilities",
 
-  "description": "To what extent is each of the following parties responsible for the harm observed in this interaction?",
+        "description": "To what extent is each of the following parties responsible for the harm observed in this interaction? Select \"Not responsible at all\" if no harm presented",
 
-  "display_config": {
-    "num_columns": 1
-  },
+        "display_config": {
+          "num_columns": 1
+        },
 
-  "arrangement": "vertical",
+        "arrangement": "vertical",
 
-  "options": [
-    "The AI agent (Replika)",
-    "The user (human who interacted with the AI)",
-    "The developer team (e.g., prompt engineers, product designers)",
-    "The company/platform (i.e., Replika)",
-    "The underlying model provider (e.g., OpenAI)",
-    "The regulators or oversight bodies",
-    "Other"
-  ],
+        "options": [
+          "The AI agent (Replika)",
+          "The user (human who interacted with the AI)",
+          "The developer team (e.g., prompt engineers, product designers)",
+          "The company/platform (i.e., Replika)",
+          "The underlying model provider (e.g., OpenAI)",
+          "The regulators or oversight bodies",
+          "Other"
+        ],
 
-  "labels": [
-    "Not responsible at all",
-    "Slightly responsible",
-    "Moderately responsible",
-    "Highly responsible",
-    "Fully responsible",
-    "No harm"
-  ],
+        "labels": [
+          "Not responsible at all",
+          "Slightly responsible",
+          "Moderately responsible",
+          "Highly responsible",
+          "Fully responsible",
+        ],
 
-  "label_requirement": {
-    "required": true
-  },
+        "label_requirement": {
+          "required": true
+        },
 
-  "sequential_key_binding": true,
-},
+        "sequential_key_binding": true,
+      },
 
-{
-  "annotation_type": "text",
-  "name": "Q1g. Other Explanation",
-  "description": "If you believe other parties are responsible, please describe them here."
-}
-,
+      {
+        "annotation_type": "text",
+        "name": "Q1g. Other Explanation",
+        "description": "If you believe other parties are responsible, please describe them here."
+      }
+      ,
       {
         "annotation_type": "radio",
         "name": "Q2. Harmful behavior category",
@@ -253,7 +252,7 @@
             { "name": "Privacy violations", "key_value": "privacy" },
             { "name": "Disregard", "key_value": "disregard" },
             { "name": "Others", "key_value": "other" },
-            { "name": "No harm", "key_value": "15" },
+            { "name": "Select this if no harm presented", "key_value": "15" },
           ],
         "has_free_response": { "instruction": "If others, please specify:" },
         "label_requirement": { "required": true },
