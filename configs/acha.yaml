@@ -169,24 +169,11 @@
         "label_requirement": { "required": true },
       },
       {
-        "annotation_type": "radio",
-        "name": "Q1f. Initiator",
-        "description": "Q1f. Who initiated the harmful interaction?",
-        "labels":
-          [
-            { "name": "The user", "key_value": "q1f_user" },
-            { "name": "The AI (Replika)", "key_value": "q1f_ai" },
-            { "name": "Hard to tell", "key_value": "q1f_unclear" },
-            { "name": "Select this if no harm presented", "key_value": "q1f_4" },
-          ],
-        "label_requirement": { "required": true },
-      },
-      {
         "annotation_type": "multirate",
 
-        "name": "Q1g. Responsibilities",
+        "name": "Q1f. Responsibilities",
 
-        "description": "Q1g. To what extent is each of the following parties responsible for the harm observed in this interaction? Select \"Not responsible at all\" if no harm presented.",
+        "description": "Q1f. To what extent is each of the following parties responsible for the harm observed in this interaction? Select \"Not responsible at all\" if no harm presented.",
 
         "display_config": {
           "num_columns": 1
@@ -203,7 +190,6 @@
           "The regulators or oversight bodies",
           "Other (If no other parties are involved, please select \"Not responsible at all\")"
         ],
-
         "labels": [
           "1. Not responsible at all",
           "2. Slightly responsible",
@@ -221,8 +207,8 @@
 
       {
         "annotation_type": "text",
-        "name": "Q1g. Other Explanation",
-        "description": "Q1g. If you believe other parties are responsible, please describe them here."
+        "name": "Q1f. Other Explanation",
+        "description": "Q1f. If you believe other parties are responsible, please describe them here."
       }
       ,
       {
