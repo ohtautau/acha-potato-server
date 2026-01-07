@@ -26,3 +26,5 @@ cache/
 # IDE
 .vscode/
 .idea/
+
+.annotation_output/
