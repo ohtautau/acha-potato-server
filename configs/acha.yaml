@@ -5,7 +5,7 @@
   "output_annotation_dir": "annotation_output/pilot/acha/",
   "output_annotation_format": "tsv",
   "annotation_codebook_url": "https://drive.google.com/file/d/13ZAIrAvlR5AUgJj1WQvHq0sg0-GlqYMn/view?usp=sharing",
-  "data_files": ["data_files/pilot_data.jsonl"],
+  "data_files": ["data_files/all_data.jsonl"],
   "item_properties": { "id_key": "id", "text_key": "text" },
   "list_as_text": { "text_list_prefix_type": "None", "horizontal": false },
   "user_config": { "allow_all_users": true, "users": [] },
